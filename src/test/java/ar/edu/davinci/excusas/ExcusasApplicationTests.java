@@ -1,13 +1,13 @@
-package ar.edu.davinci.demo;
+package ar.edu.davinci.excusas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class ExcusasApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void contextLoads() {} {
 	}
 
 }
