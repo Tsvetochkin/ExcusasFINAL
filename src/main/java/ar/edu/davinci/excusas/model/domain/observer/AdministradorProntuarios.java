@@ -4,14 +4,16 @@ import ar.edu.davinci.excusas.model.domain.Prontuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdministradorProntuarios implements IObservable {
+/**
+ * Синглтон для управления пронтуарио (списком прогулов).
+ * Наследуется от Observable для уведомления других отделов.
+ */
+public class AdministradorProntuarios extends Observable {
     private static AdministradorProntuarios instancia;
     private List<Prontuario> prontuarios;
-    private List<IObservador> observadores;
 
     private AdministradorProntuarios() {
         this.prontuarios = new ArrayList<>();
-        this.observadores = new ArrayList<>();
     }
 
     public static synchronized AdministradorProntuarios getInstancia() {
@@ -24,18 +26,6 @@ public class AdministradorProntuarios implements IObservable {
     public void registrarProntuario(Prontuario prontuario) {
         this.prontuarios.add(prontuario);
         notificarObservadores(prontuario);
-    }
-
-    @Override
-    public void agregarObservador(IObservador observador) {
-        this.observadores.add(observador);
-    }
-
-    @Override
-    public void notificarObservadores(Prontuario prontuario) {
-        for (IObservador observador : observadores) {
-            observador.actualizar(prontuario);
-        }
     }
 
     public List<Prontuario> getProntuarios() {
