@@ -22,8 +22,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
      */
     Empleado findByEmail(String email);
 
-    /**
-     * Еще один пример: найти по имени
-     */
     java.util.List<Empleado> findByNombreContaining(String partOfName);
+
+    java.util.Optional<Empleado> findByNroLegajo(int nroLegajo);
 }

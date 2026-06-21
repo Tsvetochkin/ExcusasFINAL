@@ -14,9 +14,12 @@ public class DeliveryModo {
     }
 
     private IModo getModoPara(Encargado unEncargado) {
+        // Si tiene modo forzado (puesto via API), lo usa
+        if (unEncargado.getModoForzado() != null) {
+            return StateFactory.getModo(unEncargado.getModoForzado());
+        }
+        // Si no, elige automáticamente por cantidad procesada
         int procesadas = unEncargado.getExcusasProcesadas();
-        
-        // Логика выбора режима делегирована фабрике через строковые ключи
         if (procesadas < 5) {
             return StateFactory.getModo("PRODUCTIVO");
         } else if (procesadas <= 10) {

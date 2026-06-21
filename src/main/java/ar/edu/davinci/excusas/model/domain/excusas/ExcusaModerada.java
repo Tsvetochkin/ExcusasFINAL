@@ -2,14 +2,14 @@ package ar.edu.davinci.excusas.model.domain.excusas;
 
 import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
+import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
-/**
- * Базовый класс для умеренных оправданий.
- */
 public abstract class ExcusaModerada extends Excusa {
 
-    public ExcusaModerada(Empleado empleado) {
-        super(empleado);
+    protected ExcusaModerada() {}
+
+    public ExcusaModerada(Empleado empleado, TipoExcusa tipo) {
+        super(empleado, tipo);
     }
 
     @Override

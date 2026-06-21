@@ -6,6 +6,7 @@ import ar.edu.davinci.excusas.model.domain.*;
 import ar.edu.davinci.excusas.model.domain.excusas.*;
 import ar.edu.davinci.excusas.model.domain.observer.*;
 import ar.edu.davinci.excusas.model.service.EmpleadoService;
+import ar.edu.davinci.excusas.model.service.ExcusaService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,14 +19,10 @@ public class ExcusasApplication {
 		SpringApplication.run(ExcusasApplication.class, args);
 	}
 
-	/**
-	 * Теперь мы внедряем EmpleadoService.
-	 * Это соответствует принципу разделения ответственности из твоего урока.
-	 */
 	@Bean
-	public CommandLineRunner runLogic(EmpleadoService service) {
+	public CommandLineRunner runLogic(EmpleadoService empleadoService, ExcusaService excusaService) {
 		return args -> {
-			System.out.println("\n=== [SERVICE LAYER] Empresa Excusas S.A. System Startup ===");
+			System.out.println("\n=== [COMPLETE PERSISTENCE] Empresa Excusas S.A. System Startup ===");
 
 			// 1. Создаем сотрудников
 			Empleado dima = new Empleado("Dima", "dima@empresa.com", 501);
@@ -33,17 +30,11 @@ public class ExcusasApplication {
 			Empleado andrey = new Empleado("Andrey", "andrey@empresa.com", 503);
 
 			// 2. Сохраняем их через SERVICE
-			service.guardar(dima);
-			service.guardar(mikhail);
-			service.guardar(andrey);
+			empleadoService.guardar(dima);
+			empleadoService.guardar(mikhail);
+			empleadoService.guardar(andrey);
 
-			System.out.println(">>> Данные прошли через Service и сохранены в БД!");
-
-			// 3. Настраиваем наблюдателей
-			AdministradorProntuarios admin = AdministradorProntuarios.getInstancia();
-			admin.agregarObservador(new EquipoDireccion());
-			
-			// 4. Собираем цепочку ответственных
+			// 3. Собираем цепочку ответственных
 			ExcusaController controller = new CadenaEncargadosBuilder()
 				.conRecepcionista("Ana", "ana@empresa.com", 101)
 				.conSupervisora("Berta", "berta@empresa.com", 102)
@@ -51,11 +42,19 @@ public class ExcusasApplication {
 				.conEncargadoPorDefecto("Bot de Rechazo", "bot@empresa.com", 999)
 				.build();
 
-			// 5. Тестируем отговорку
-			System.out.println("\n--- Caso: Проверка логики для Михаила ---");
-			controller.manejar(new ExcusaTrivial(mikhail));
+			// 4. Дима подает Тривиальное оправдание
+			System.out.println("\n--- Caso 1: Оправдание для Димы ---");
+			Excusa excusaDima = new ExcusaTrivial(dima);
+			controller.manejar(excusaDima);
+			excusaService.guardar(excusaDima); // СОХРАНЯЕМ В БАЗУ!
 
-			System.out.println("\n=== Architecture: Application -> Service -> Repository -> DB ===\n");
+			// 5. Михаил подает Сложное оправдание (Инверосимиль)
+			System.out.println("\n--- Caso 2: Оправдание для Михаила ---");
+			Excusa excusaMikhail = new ExcusaInverosimil(mikhail);
+			controller.manejar(excusaMikhail);
+			excusaService.guardar(excusaMikhail); // СОХРАНЯЕМ В БАЗУ!
+
+			System.out.println("\n=== Datos Guardados en la Base de Datos ===");
 		};
 	}
 }

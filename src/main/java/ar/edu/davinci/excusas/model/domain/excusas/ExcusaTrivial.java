@@ -1,17 +1,23 @@
 package ar.edu.davinci.excusas.model.domain.excusas;
 
+import jakarta.persistence.Entity;
+
 import ar.edu.davinci.excusas.model.domain.EmailSender;
 import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
+import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
 /**
  * Тривиальное оправдание. 
  * Принимается автоматически без лишних проверок.
  */
+@Entity
 public class ExcusaTrivial extends Excusa {
 
+    protected ExcusaTrivial() {}
+
     public ExcusaTrivial(Empleado empleado) {
-        super(empleado); // Передаем сотрудника наверх родителю
+        super(empleado, TipoExcusa.TRIVIAL);
     }
 
     @Override

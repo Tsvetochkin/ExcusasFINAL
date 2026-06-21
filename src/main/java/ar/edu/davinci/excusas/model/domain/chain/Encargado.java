@@ -12,12 +12,16 @@ public abstract class Encargado extends Empleado implements IEncargado {
     protected Encargado siguiente;
     private DeliveryModo deliveryModo;
     private int excusasProcesadas;
+    private String modoForzado; // null = automático, "VAGO"/"NORMAL"/"PRODUCTIVO" = forzado
 
     public Encargado(String nombre, String email, int nroLegajo) {
         super(nombre, email, nroLegajo);
         this.deliveryModo = new DeliveryModo();
         this.excusasProcesadas = 0;
     }
+
+    public void setModoForzado(String modo) { this.modoForzado = modo; }
+    public String getModoForzado() { return modoForzado; }
 
     /**
      * Основной метод для внешнего вызова. 
@@ -35,6 +39,7 @@ public abstract class Encargado extends Empleado implements IEncargado {
     public final void revisarExcusa(Excusa excusa) {
         if (this.puedeManejar(excusa)) {
             this.procesar(excusa);
+            excusa.setAceptadaPor(this.getNombre()); // registramos quién procesó
             this.excusasProcesadas++;
         } else {
             this.derivar(excusa);

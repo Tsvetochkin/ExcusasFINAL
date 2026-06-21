@@ -1,16 +1,22 @@
 package ar.edu.davinci.excusas.model.domain.excusas;
 
+import jakarta.persistence.Entity;
+
 import ar.edu.davinci.excusas.model.domain.EmailSender;
 import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
+import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
 /**
  * Невероятное оправдание. Только CEO может решить судьбу такого сотрудника.
  */
+@Entity
 public class ExcusaInverosimil extends Excusa {
 
+    protected ExcusaInverosimil() {}
+
     public ExcusaInverosimil(Empleado empleado) {
-        super(empleado);
+        super(empleado, TipoExcusa.INVEROSIMIL);
     }
 
     @Override

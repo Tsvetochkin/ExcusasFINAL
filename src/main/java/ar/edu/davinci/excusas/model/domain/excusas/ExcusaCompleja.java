@@ -1,16 +1,22 @@
 package ar.edu.davinci.excusas.model.domain.excusas;
 
+import jakarta.persistence.Entity;
+
 import ar.edu.davinci.excusas.model.domain.EmailSender;
 import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
+import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
 /**
  * Сложное оправдание. Требует внимания отдела кадров (GerenteRRHH).
  */
+@Entity
 public class ExcusaCompleja extends Excusa {
 
+    protected ExcusaCompleja() {}
+
     public ExcusaCompleja(Empleado empleado) {
-        super(empleado);
+        super(empleado, TipoExcusa.COMPLEJA);
     }
 
     @Override

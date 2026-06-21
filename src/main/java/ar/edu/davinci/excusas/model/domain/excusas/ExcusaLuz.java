@@ -1,15 +1,21 @@
 package ar.edu.davinci.excusas.model.domain.excusas;
 
+import jakarta.persistence.Entity;
+
 import ar.edu.davinci.excusas.model.domain.EmailSender;
 import ar.edu.davinci.excusas.model.domain.Empleado;
+import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
 /**
  * Оправдание: Отключили свет.
  */
+@Entity
 public class ExcusaLuz extends ExcusaModerada {
 
+    protected ExcusaLuz() {}
+
     public ExcusaLuz(Empleado empleado) {
-        super(empleado);
+        super(empleado, TipoExcusa.LUZ);
     }
 
     @Override
