@@ -19,13 +19,13 @@ public class EmpleadoService {
         this.repository = repository;
     }
 
-    // Registrar desde DTO (viene de la API)
+    // from the REST endpoint
     public Empleado registrar(EmpleadoRequestDTO dto) {
         Empleado empleado = new Empleado(dto.getNombre(), dto.getEmail(), dto.getNroLegajo());
         return repository.save(empleado);
     }
 
-    // Guardar directamente (usado en el startup)
+    // used at startup
     public Empleado guardar(Empleado empleado) {
         return repository.save(empleado);
     }

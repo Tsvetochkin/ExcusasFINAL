@@ -24,7 +24,7 @@ public abstract class Excusa implements IExcusa {
     @Enumerated(EnumType.STRING)
     private TipoExcusa motivo;
 
-    // Nombre del encargado que aceptó/rechazó la excusa (para filtros y prontuarios)
+    // name of the handler who accepted/rejected (used for filters and prontuarios)
     private String aceptadaPor;
 
     protected Excusa() {}
@@ -45,7 +45,6 @@ public abstract class Excusa implements IExcusa {
     public String getAceptadaPor() { return aceptadaPor; }
     public void setAceptadaPor(String nombre) { this.aceptadaPor = nombre; }
 
-    // По умолчанию все проверки возвращают false. 
     @Override
     public boolean esTrivial() { return false; }
 

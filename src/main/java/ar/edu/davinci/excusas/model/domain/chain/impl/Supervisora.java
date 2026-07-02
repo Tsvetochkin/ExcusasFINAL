@@ -18,7 +18,7 @@ public class Supervisora extends Encargado {
         System.out.println("Supervisora procesando excusa moderada.");
         excusa.setAceptada(true);
         
-        // Логика из ТЗ: если свет -> EDESUR, если семья -> сотруднику
+        // power outage: check with the utility company; family: check on the employee directly
         if (excusa.getClass().getSimpleName().contains("Luz")) {
             excusa.ejecutarAccion((dest, orig, asunto, cuerpo) -> 
                 System.out.println("Email enviado a EDESUR@mailfake.com.ar preguntando si es verdad el corte."));

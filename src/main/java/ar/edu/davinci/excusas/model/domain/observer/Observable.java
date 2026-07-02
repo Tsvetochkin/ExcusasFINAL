@@ -4,9 +4,6 @@ import ar.edu.davinci.excusas.model.domain.Prontuario;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Базовый абстрактный класс для всех наблюдаемых объектов.
- */
 public abstract class Observable {
     private List<IObservador> observadores = new ArrayList<>();
 

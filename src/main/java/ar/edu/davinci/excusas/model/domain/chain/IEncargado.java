@@ -2,9 +2,7 @@ package ar.edu.davinci.excusas.model.domain.chain;
 
 import ar.edu.davinci.excusas.model.domain.Excusa;
 
-/**
- * Контракт для любого лица, принимающего решения по оправданиям.
- */
+// anyone who can review and decide on excuses
 public interface IEncargado {
     void revisarExcusa(Excusa excusa);
 }

@@ -3,9 +3,7 @@ package ar.edu.davinci.excusas.model.controller;
 import ar.edu.davinci.excusas.model.domain.Excusa;
 import ar.edu.davinci.excusas.model.domain.chain.Encargado;
 
-/**
- * Реализация контроллера, которая запускает цепочку обязанностей.
- */
+// kicks off the chain of responsibility starting from the first handler
 public class CadenaDeEncargados implements ExcusaController {
     private Encargado primero;
 

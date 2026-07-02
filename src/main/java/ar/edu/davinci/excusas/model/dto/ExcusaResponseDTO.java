@@ -9,7 +9,7 @@ public class ExcusaResponseDTO {
     private String motivo;
     private boolean aceptada;
     private LocalDate fecha;
-    private String aceptadaPor; // nombre del encargado que procesó la excusa
+    private String aceptadaPor; // name of the handler who processed it
 
     public ExcusaResponseDTO(Long id, int legajoEmpleado, String nombreEmpleado,
                               String motivo, boolean aceptada, LocalDate fecha, String aceptadaPor) {

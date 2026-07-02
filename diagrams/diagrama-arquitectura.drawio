@@ -1,0 +1,293 @@
+<mxfile host="app.diagrams.net" version="21.0.2">
+  <diagram id="arch" name="Arquitectura - Excusas S.A.">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" value="Arquitectura de la Aplicación — Excusas S.A." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="900" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 1: CLIENT ==================== -->
+        <mxCell id="L1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="1200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="L1_label" value="CLIENTE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="56" y="80" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="client_http" value="🌐  HTTP Client (Postman / Browser)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="400" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 2: REST CONTROLLERS ==================== -->
+        <mxCell id="L2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="1200" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_label" value="CAPA REST&lt;br&gt;(Controllers)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="56" y="195" width="90" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctrl_excusas" value="&lt;b&gt;ExcusasController&lt;/b&gt;&lt;br&gt;POST /excusas&lt;br&gt;GET /excusas&lt;br&gt;GET /excusas/rechazadas&lt;br&gt;DELETE /excusas/antes-de" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="205" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctrl_empleado" value="&lt;b&gt;EmpleadoController&lt;/b&gt;&lt;br&gt;POST /empleados&lt;br&gt;GET /empleados&lt;br&gt;GET /empleados/{legajo}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="205" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctrl_encargado" value="&lt;b&gt;EncargadoController&lt;/b&gt;&lt;br&gt;POST /encargados&lt;br&gt;POST /encargados/modo&lt;br&gt;GET /encargados/cafe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="205" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctrl_prontuario" value="&lt;b&gt;ProntuarioController&lt;/b&gt;&lt;br&gt;GET /prontuarios&lt;br&gt;GET /prontuarios/{legajo}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="850" y="205" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 3: SERVICES ==================== -->
+        <mxCell id="L3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="360" width="1200" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="L3_label" value="CAPA DE&lt;br&gt;SERVICIOS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="56" y="370" width="90" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="svc_excusa" value="&lt;b&gt;ExcusaService&lt;/b&gt;&lt;br&gt;registrar / consultar&lt;br&gt;filtrar / eliminar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="375" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="svc_empleado" value="&lt;b&gt;EmpleadoService&lt;/b&gt;&lt;br&gt;registrar / buscar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="375" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="svc_cadena" value="&lt;b&gt;CadenaService&lt;/b&gt;&lt;br&gt;agregar encargado&lt;br&gt;cambiar modo (State)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="375" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="svc_prontuario" value="&lt;b&gt;ProntuarioService&lt;/b&gt;&lt;br&gt;consultar prontuarios" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="850" y="375" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 4: DOMAIN ==================== -->
+        <mxCell id="L4_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f0ff;strokeColor=#9673a6;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="1200" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="L4_label" value="CAPA DE DOMINIO" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="56" y="533" width="110" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Pattern: Chain of Responsibility -->
+        <mxCell id="pat_chain_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="555" width="280" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_chain_title" value="&lt;b&gt;Chain of Responsibility&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="555" width="280" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_chain_iencargado" value="«interface» IEncargado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="593" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_chain_encargado" value="&lt;b&gt;Encargado&lt;/b&gt; (abstract)&lt;br&gt;Template Method: revisarExcusa()&lt;br&gt;+ manejar() → DeliveryModo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="638" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_chain_impl" value="CEO · Supervisora · Recepcionista&lt;br&gt;GerenteRRHH · EncargadoDefecto&lt;br&gt;EncargadoDinamico" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="712" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_chain_builder" value="CadenaEncargadosBuilder&lt;br&gt;(Builder Pattern)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="786" width="240" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Pattern: State -->
+        <mxCell id="pat_state_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8dc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="370" y="555" width="260" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_state_title" value="&lt;b&gt;State Pattern&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="370" y="555" width="260" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_state_delivery" value="&lt;b&gt;DeliveryModo&lt;/b&gt;&lt;br&gt;Selecciona modo según&lt;br&gt;excusas procesadas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="593" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_state_factory" value="&lt;b&gt;StateFactory&lt;/b&gt;&lt;br&gt;Cachea instancias de IModo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="675" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_state_modes" value="&lt;b&gt;«interface» IModo&lt;/b&gt;&lt;br&gt;ModoNormal · ModoVago&lt;br&gt;ModoProductivo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="737" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_state_enum" value="ModoTrabajo (enum)&lt;br&gt;NORMAL · VAGO · PRODUCTIVO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="809" width="220" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Pattern: Observer -->
+        <mxCell id="pat_obs_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5e6ff;strokeColor=#7a5e9c;" vertex="1" parent="1">
+          <mxGeometry x="650" y="555" width="270" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_obs_title" value="&lt;b&gt;Observer Pattern&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#7a5e9c;" vertex="1" parent="1">
+          <mxGeometry x="650" y="555" width="270" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_obs_admin" value="&lt;b&gt;AdministradorProntuarios&lt;/b&gt;&lt;br&gt;Singleton&lt;br&gt;registrarProntuario() → notifica" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#7a5e9c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="665" y="593" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_obs_observable" value="Observable (abstract)&lt;br&gt;Lista de IObservador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#7a5e9c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="665" y="675" width="240" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_obs_equipo" value="EquipoDireccion&lt;br&gt;actualizar(Prontuario) → log" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#7a5e9c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="665" y="732" width="240" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_obs_prontuario" value="Prontuario (entidad JPA)&lt;br&gt;nroLegajo · empleado · excusa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="665" y="789" width="240" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Domain Model -->
+        <mxCell id="pat_model_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="555" width="290" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_model_title" value="&lt;b&gt;Modelo de Dominio&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="555" width="290" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_model_empleado" value="&lt;b&gt;Empleado&lt;/b&gt; (@Entity)&lt;br&gt;nombre · email · nroLegajo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="955" y="593" width="260" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_model_excusa" value="&lt;b&gt;Excusa&lt;/b&gt; (abstract, @Entity, SINGLE_TABLE)&lt;br&gt;ExcusaTrivial · ExcusaCompleja&lt;br&gt;ExcusaModerada → ExcusaFamiliar / ExcusaLuz&lt;br&gt;ExcusaInverosimil" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="955" y="655" width="260" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_model_tipo" value="TipoExcusa (enum)&lt;br&gt;TRIVIAL · FAMILIAR · LUZ · COMPLEJA · INVEROSIMIL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="955" y="747" width="260" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="pat_model_email" value="«interface» EmailSender&lt;br&gt;enviarEmail(dest, orig, asunto, cuerpo)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="955" y="804" width="260" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 5: REPOSITORIES ==================== -->
+        <mxCell id="L5_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="920" width="1200" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L5_label" value="CAPA DE&lt;br&gt;REPOSITORIOS&lt;br&gt;(Spring Data JPA)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="56" y="940" width="90" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repo_excusa" value="&lt;b&gt;ExcusaRepository&lt;/b&gt;&lt;br&gt;findByEmpleadoNroLegajo · findByFecha&lt;br&gt;findByAceptada · deleteByFechaBefore" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="935" width="270" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repo_empleado" value="&lt;b&gt;EmpleadoRepository&lt;/b&gt;&lt;br&gt;findByNroLegajo(int)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="460" y="935" width="250" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repo_prontuario" value="&lt;b&gt;ProntuarioRepository&lt;/b&gt;&lt;br&gt;JpaRepository&lt;Prontuario, Long&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="740" y="935" width="250" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LAYER 6: DATABASE ==================== -->
+        <mxCell id="L6_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1070" width="1200" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="L6_label" value="BASE DE DATOS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="56" y="1073" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="db_h2" value="&lt;b&gt;H2 In-Memory Database&lt;/b&gt;&lt;br&gt;tablas: excusas (SINGLE_TABLE) · empleados · prontuarios&lt;br&gt;Consola: /h2-console  |  Gestionado por Hibernate / JPA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1085" width="700" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== VERTICAL ARROWS BETWEEN LAYERS ==================== -->
+
+        <!-- Client → REST -->
+        <mxCell id="arr_1" value="HTTP Request / Response" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;startArrow=block;startFill=1;strokeColor=#000000;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="150" as="sourcePoint"/>
+            <mxPoint x="650" y="190" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- REST → Service -->
+        <mxCell id="arr_2" value="llama a Service" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;strokeColor=#000000;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="310" as="sourcePoint"/>
+            <mxPoint x="650" y="360" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Service → Domain -->
+        <mxCell id="arr_3" value="orquesta dominio" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;strokeColor=#000000;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="480" as="sourcePoint"/>
+            <mxPoint x="650" y="530" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Domain → Repository -->
+        <mxCell id="arr_4" value="persiste entidades" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;strokeColor=#000000;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="870" as="sourcePoint"/>
+            <mxPoint x="650" y="920" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Repository → DB -->
+        <mxCell id="arr_5" value="SQL (Hibernate)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;strokeColor=#000000;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="1020" as="sourcePoint"/>
+            <mxPoint x="650" y="1070" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== HORIZONTAL ARROW: ExcusaService → CadenaDeEncargados ==================== -->
+        <mxCell id="arr_chain" value="procesarExcusa()" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;dashed=1;strokeColor=#000000;fontSize=10;" edge="1" source="svc_excusa" target="svc_cadena" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="900" width="170" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_title" value="&lt;b&gt;Leyenda&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="905" width="170" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="932" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg1t" value="Capa REST" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="932" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="955" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2t" value="Servicios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="955" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="978" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3t" value="Chain of Responsibility" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="978" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1001" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4t" value="State Pattern" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="1001" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#7a5e9c;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1024" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5t" value="Observer Pattern" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="1024" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1047" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg6t" value="Jerarquía Excusa" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="1047" width="120" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1070" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg7t" value="Repositorios / Builder" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1118" y="1070" width="120" height="15" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

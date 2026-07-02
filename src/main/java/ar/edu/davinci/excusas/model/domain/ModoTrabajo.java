@@ -1,6 +1,6 @@
 package ar.edu.davinci.excusas.model.domain;
 
-// Enum para los modos de trabajo de los encargados (requerido en el parcial)
+// work modes for handlers — affects how they process excuses
 public enum ModoTrabajo {
     NORMAL,
     VAGO,

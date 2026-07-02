@@ -15,7 +15,7 @@ public class GerenteRRHH extends Encargado {
 
     @Override
     protected void procesar(Excusa excusa) {
-        System.out.println("Gerente RRHH процессирует.");
+        System.out.println("Gerente RRHH procesando excusa compleja.");
         excusa.setAceptada(true);
         excusa.ejecutarAccion((dest, orig, asunto, cuerpo) -> System.out.println("Email enviado."));
     }

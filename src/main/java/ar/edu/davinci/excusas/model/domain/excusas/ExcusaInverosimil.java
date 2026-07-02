@@ -7,9 +7,6 @@ import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
 import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
-/**
- * Невероятное оправдание. Только CEO может решить судьбу такого сотрудника.
- */
 @Entity
 public class ExcusaInverosimil extends Excusa {
 

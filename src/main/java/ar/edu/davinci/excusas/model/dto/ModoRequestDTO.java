@@ -1,8 +1,6 @@
 package ar.edu.davinci.excusas.model.dto;
 
-// Para PUT /encargados/modo: cambiar el modo de trabajo
-// { "nroLegajo": 101, "modo": "VAGO" }
-// El modo debe ser uno de: NORMAL, VAGO, PRODUCTIVO (valores del enum ModoTrabajo)
+// body: { "nroLegajo": 101, "modo": "VAGO" } — valid values: NORMAL, VAGO, PRODUCTIVO
 public class ModoRequestDTO {
     private int nroLegajo;
     private String modo;

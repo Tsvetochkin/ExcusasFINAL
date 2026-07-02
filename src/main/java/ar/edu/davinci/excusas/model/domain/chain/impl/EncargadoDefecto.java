@@ -10,7 +10,7 @@ public class EncargadoDefecto extends Encargado {
 
     @Override
     public boolean puedeManejar(Excusa excusa) {
-        // Он берет на себя всё, что не обработали другие
+        // catches anything the others didn't handle
         return true;
     }
 
@@ -22,7 +22,7 @@ public class EncargadoDefecto extends Encargado {
 
     @Override
     public void derivar(Excusa excusa) {
-        // Он не должен ничего деривировать (перекрываем метод родителя)
+        // doesn't pass on — overrides parent to stop the chain here
         System.out.println("Fin de la cadena: No hay más responsables.");
     }
 }

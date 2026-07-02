@@ -1,10 +1,9 @@
 package ar.edu.davinci.excusas.model.dto;
 
-// Lo que el cliente envía para registrar una excusa:
-// { "legajo": 501, "motivo": "TRIVIAL" }
+// body: { "legajo": 501, "motivo": "TRIVIAL" }
 public class ExcusaRequestDTO {
     private int legajo;
-    private String motivo; // String porque el cliente manda texto, lo convertimos a enum en el Service
+    private String motivo; // String — converted to enum in the service
 
     public int getLegajo() { return legajo; }
     public void setLegajo(int legajo) { this.legajo = legajo; }

@@ -24,8 +24,7 @@ public class ExcusasController {
         this.service = service;
     }
 
-    // GET /excusas → todas las excusas, con filtros opcionales
-    // Ejemplos: /excusas?motivo=TRIVIAL  o  /excusas?encargado=Ana
+    // GET /excusas — all excuses, optional filters: ?motivo=TRIVIAL or ?encargado=Ana
     @GetMapping
     public ResponseEntity<?> getTodas(
             @RequestParam(required = false) String motivo,
@@ -37,26 +36,25 @@ public class ExcusasController {
         }
     }
 
-    // POST /excusas → registrar nueva excusa
-    // Body: { "legajo": 501, "motivo": "TRIVIAL" }
+    // POST /excusas — body: { "legajo": 501, "motivo": "TRIVIAL" }
     @PostMapping
     public ResponseEntity<?> registrar(@RequestBody ExcusaRequestDTO dto) {
         try {
             ExcusaResponseDTO resultado = service.registrar(dto);
             return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
         } catch (IllegalArgumentException e) {
-            // 400 Bad Request si el motivo no existe o el empleado no existe
+            // 400 if the motivo is unknown or the employee doesn't exist
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 
-    // GET /excusas/{legajo} → excusas de un empleado
+    // GET /excusas/{legajo} — excuses for one employee
     @GetMapping("/{legajo}")
     public List<ExcusaResponseDTO> getPorLegajo(@PathVariable int legajo) {
         return service.buscarPorLegajo(legajo);
     }
 
-    // GET /excusas/rechazadas → excusas no aceptadas
+    // GET /excusas/rechazadas — rejected excuses only
     @GetMapping("/rechazadas")
     public List<ExcusaResponseDTO> getRechazadas() {
         return service.listarRechazadas();
@@ -75,7 +73,7 @@ public class ExcusasController {
     @DeleteMapping("/eliminar")
     public ResponseEntity<?> eliminar(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaLimite) {
-        // Validación: si no se pasa fechaLimite, rechazar con error claro
+        // require the date param to prevent accidental wipes
         if (fechaLimite == null) {
             return ResponseEntity.badRequest()
                     .body(Map.of("error", "Debe proporcionar el parámetro fechaLimite para proteger la operación"));

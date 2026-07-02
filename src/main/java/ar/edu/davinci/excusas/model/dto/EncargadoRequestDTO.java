@@ -2,13 +2,12 @@ package ar.edu.davinci.excusas.model.dto;
 
 import java.util.List;
 
-// Para POST /encargados: agregar un nuevo encargado dinámicamente
-// { "nombre": "Carlos", "email": "carlos@empresa.com", "nroLegajo": 200, "motivos": ["TRIVIAL", "FAMILIAR"] }
+// body: { "nombre": "Carlos", "email": "carlos@empresa.com", "nroLegajo": 200, "motivos": ["TRIVIAL", "FAMILIAR"] }
 public class EncargadoRequestDTO {
     private String nombre;
     private String email;
     private int nroLegajo;
-    private List<String> motivos; // qué tipos de excusa puede manejar
+    private List<String> motivos; // which excuse types this handler can deal with
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

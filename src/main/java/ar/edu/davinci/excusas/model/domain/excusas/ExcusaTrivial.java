@@ -7,10 +7,6 @@ import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
 import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
-/**
- * Тривиальное оправдание. 
- * Принимается автоматически без лишних проверок.
- */
 @Entity
 public class ExcusaTrivial extends Excusa {
 
@@ -27,7 +23,6 @@ public class ExcusaTrivial extends Excusa {
 
     @Override
     public void ejecutarAccion(EmailSender emailSender) {
-        // Логика: Тривиальное оправдание просто уведомляет по почте
         emailSender.enviarEmail(
             getEmpleado().getEmail(), 
             "sistema@empresa.com", 

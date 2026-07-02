@@ -6,9 +6,6 @@ import ar.edu.davinci.excusas.model.domain.EmailSender;
 import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
-/**
- * Оправдание: Семейные обстоятельства.
- */
 @Entity
 public class ExcusaFamiliar extends ExcusaModerada {
 

@@ -4,10 +4,7 @@ import ar.edu.davinci.excusas.model.domain.Prontuario;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Синглтон для управления пронтуарио (списком прогулов).
- * Наследуется от Observable для уведомления других отделов.
- */
+// Singleton — keeps the prontuario list and notifies all observers on each new entry
 public class AdministradorProntuarios extends Observable {
     private static AdministradorProntuarios instancia;
     private List<Prontuario> prontuarios;

@@ -18,7 +18,7 @@ public class ProntuarioController {
         this.service = service;
     }
 
-    // GET /prontuarios → listado completo de prontuarios
+    // GET /prontuarios
     @GetMapping
     public List<Prontuario> getTodos() {
         return service.listarTodos();

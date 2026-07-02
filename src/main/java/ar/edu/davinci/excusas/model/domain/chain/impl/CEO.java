@@ -21,9 +21,8 @@ public class CEO extends Encargado implements IObservador {
     protected void procesar(Excusa excusa) {
         System.out.println("CEO procesando excusa inverosímil.");
         excusa.setAceptada(true);
-        
-        // Текст из ТЗ
-        excusa.ejecutarAccion((dest, orig, asunto, cuerpo) -> 
+
+        excusa.ejecutarAccion((dest, orig, asunto, cuerpo) ->
             System.out.println("Email enviado a " + dest + " | Respuesta: Aprobado por creatividad"));
         
         Prontuario prontuario = new Prontuario(excusa.getEmpleado(), excusa);

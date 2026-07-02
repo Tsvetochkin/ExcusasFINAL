@@ -21,18 +21,16 @@ public class EmpleadoController {
         this.service = service;
     }
 
-    // GET /empleados → devuelve todos los empleados
+    // GET /empleados
     @GetMapping
     public List<Empleado> getTodos() {
         return service.listarTodos();
     }
 
-    // POST /empleados → registra un nuevo empleado
-    // Recibe JSON: { "nombre": "Juan", "email": "juan@empresa.com", "nroLegajo": 504 }
+    // POST /empleados — body: { "nombre": "Juan", "email": "juan@empresa.com", "nroLegajo": 504 }
     @PostMapping
     public ResponseEntity<Empleado> registrar(@RequestBody EmpleadoRequestDTO dto) {
         Empleado creado = service.registrar(dto);
-        // 201 Created = recurso creado exitosamente
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 }

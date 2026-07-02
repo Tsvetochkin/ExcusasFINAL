@@ -1,7 +1,6 @@
 package ar.edu.davinci.excusas.model.dto;
 
-// Lo que el cliente envía para registrar un empleado:
-// { "nombre": "Juan", "email": "juan@empresa.com", "nroLegajo": 504 }
+// body: { "nombre": "Juan", "email": "juan@empresa.com", "nroLegajo": 504 }
 public class EmpleadoRequestDTO {
     private String nombre;
     private String email;

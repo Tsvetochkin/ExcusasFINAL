@@ -23,14 +23,13 @@ public class EncargadoController {
         this.cadenaService = cadenaService;
     }
 
-    // GET /encargados → configuración actual de la cadena
+    // GET /encargados — current chain config
     @GetMapping
     public List<CadenaService.EncargadoInfoDTO> getConfig() {
         return cadenaService.getInfo();
     }
 
-    // POST /encargados → agregar nuevo encargado dinámicamente
-    // Body: { "nombre": "Carlos", "email": "carlos@empresa.com", "nroLegajo": 200, "motivos": ["TRIVIAL"] }
+    // POST /encargados — body: { "nombre": "Carlos", "email": "carlos@empresa.com", "nroLegajo": 200, "motivos": ["TRIVIAL"] }
     @PostMapping
     public ResponseEntity<?> agregar(@RequestBody EncargadoRequestDTO dto) {
         try {
@@ -44,8 +43,7 @@ public class EncargadoController {
         }
     }
 
-    // PUT /encargados/modo → cambiar modo de trabajo de un encargado
-    // Body: { "nroLegajo": 101, "modo": "VAGO" }
+    // PUT /encargados/modo — body: { "nroLegajo": 101, "modo": "VAGO" }
     @PutMapping("/modo")
     public ResponseEntity<?> cambiarModo(@RequestBody ModoRequestDTO dto) {
         boolean ok = cadenaService.cambiarModo(dto.getNroLegajo(), dto.getModo());

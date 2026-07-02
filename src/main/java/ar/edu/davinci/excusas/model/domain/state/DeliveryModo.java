@@ -3,10 +3,7 @@ package ar.edu.davinci.excusas.model.domain.state;
 import ar.edu.davinci.excusas.model.domain.chain.Encargado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
 
-/**
- * Класс для доставки (delivery) состояний.
- * Выбирает нужный режим работы сотрудника в зависимости от его продуктивности.
- */
+// picks the right work mode for a handler based on how many excuses they've processed
 public class DeliveryModo {
 
     public void actuar(Encargado unEncargado, Excusa unaExcusa) {
@@ -14,11 +11,11 @@ public class DeliveryModo {
     }
 
     private IModo getModoPara(Encargado unEncargado) {
-        // Si tiene modo forzado (puesto via API), lo usa
+        // if forced via API, use that
         if (unEncargado.getModoForzado() != null) {
             return StateFactory.getModo(unEncargado.getModoForzado());
         }
-        // Si no, elige automáticamente por cantidad procesada
+        // otherwise auto-pick based on how many they've already processed
         int procesadas = unEncargado.getExcusasProcesadas();
         if (procesadas < 5) {
             return StateFactory.getModo("PRODUCTIVO");

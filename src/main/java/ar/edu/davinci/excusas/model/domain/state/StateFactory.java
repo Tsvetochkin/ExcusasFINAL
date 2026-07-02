@@ -3,15 +3,11 @@ package ar.edu.davinci.excusas.model.domain.state;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Фабрика для управления состояниями (Modos).
- * Реализует "Delivery de estados" для динамического разрешения зависимостей.
- */
+// factory that caches all IModo instances — add new states without changing this class
 public class StateFactory {
     private static Map<String, IModo> registry = new HashMap<>();
 
     static {
-        // Регистрируем базовые состояния
         registry.put("PRODUCTIVO", new ModoProductivo());
         registry.put("NORMAL", new ModoNormal());
         registry.put("VAGO", new ModoVago());
@@ -21,9 +17,7 @@ public class StateFactory {
         return registry.getOrDefault(tipo.toUpperCase(), registry.get("NORMAL"));
     }
 
-    /**
-     * Позволяет динамически добавлять новые состояния без изменения кода фабрики.
-     */
+    // plug in new states at runtime without touching this class
     public static void registrarModo(String nombre, IModo modo) {
         registry.put(nombre.toUpperCase(), modo);
     }

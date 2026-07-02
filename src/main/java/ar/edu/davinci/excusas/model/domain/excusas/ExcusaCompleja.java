@@ -7,9 +7,6 @@ import ar.edu.davinci.excusas.model.domain.Empleado;
 import ar.edu.davinci.excusas.model.domain.Excusa;
 import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 
-/**
- * Сложное оправдание. Требует внимания отдела кадров (GerenteRRHH).
- */
 @Entity
 public class ExcusaCompleja extends Excusa {
 
