@@ -1,34 +1,48 @@
-# Excusas S.A. — Sistema de Gestión de Excusas
+# Excusas S.A. — Sistema de Gestión de Excusas Laborales
 
-Trabajo práctico parcial 2 — Diseño de Sistemas — Universidad Da Vinci (5° cuatrimestre)
-
-REST API construida con **Spring Boot 4** y **Java 21** que simula el proceso de presentación y evaluación de excusas laborales a través de una cadena de encargados.
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
+![H2](https://img.shields.io/badge/H2-In--Memory%20DB-0000CC?style=for-the-badge&logo=h2&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 
 ---
 
-## Tecnologías
+## Sobre el proyecto
 
-| Tecnología | Versión |
-|---|---|
-| Java | 21 |
-| Spring Boot | 4.0.6 |
-| Spring Data JPA / Hibernate | — |
-| Base de datos | H2 (in-memory) |
-| Build | Maven (wrapper incluido) |
+**Excusas S.A.** es una REST API backend desarrollada como trabajo práctico de la materia **Diseño de Sistemas** (Universidad Da Vinci, 5° cuatrimestre). El sistema modela el flujo de presentación y evaluación de excusas laborales dentro de una empresa ficticia.
+
+El objetivo del proyecto fue aplicar **7 patrones de diseño** en un contexto real, integrándolos en una arquitectura backend por capas con persistencia de datos y API REST consumible.
+
+La lógica central funciona así: un empleado presenta una excusa (trivial, familiar, por corte de luz, compleja o inverosímil). Esa excusa recorre una **cadena de encargados** — cada uno decide si puede manejarla o la pasa al siguiente. El comportamiento de cada encargado varía según su **estado de trabajo** (productivo, normal o vago). Si la excusa es aceptada por el CEO, se genera un **prontuario** que notifica automáticamente al equipo de dirección.
+
+---
+
+## Tech Stack
+
+| Categoría | Tecnología | Detalle |
+|---|---|---|
+| Lenguaje | Java 21 | Records, sealed classes, pattern matching |
+| Framework | Spring Boot 4.0.6 | Auto-configuration, IoC container |
+| Persistencia | Spring Data JPA + Hibernate | ORM, repositorios autogenerados |
+| Base de datos | H2 In-Memory | Consola web en `/h2-console` |
+| API | Spring MVC REST | JSON, manejo de errores con `ResponseEntity` |
+| Build | Maven (wrapper) | Sin instalación requerida |
 
 ---
 
 ## Patrones de diseño implementados
 
-| Patrón | Dónde |
-|---|---|
-| **Chain of Responsibility** | `Encargado` y sus subclases — cadena de reclasificación de excusas |
-| **Template Method** | `Encargado.revisarExcusa()` — define el esqueleto del algoritmo |
-| **State** | `DeliveryModo` + `IModo` — el comportamiento del encargado cambia según cuántas excusas procesó |
-| **Observer** | `AdministradorProntuarios` notifica a `EquipoDireccion` al registrar un prontuario |
-| **Singleton** | `AdministradorProntuarios` — una sola instancia en toda la aplicación |
-| **Builder** | `CadenaEncargadosBuilder` — arma la cadena paso a paso |
-| **Factory Method** | Creación de instancias de `Excusa` según el tipo |
+| Patrón | Dónde | Por qué |
+|---|---|---|
+| **Chain of Responsibility** | `Encargado` y sus subclases | Desacopla quién recibe la excusa de quién la procesa |
+| **Template Method** | `Encargado.revisarExcusa()` | Fija el algoritmo de revisión; las subclases solo implementan los pasos variables |
+| **State** | `DeliveryModo` + `IModo` | El comportamiento del encargado cambia en runtime según su carga de trabajo |
+| **Observer** | `AdministradorProntuarios` → `EquipoDireccion` | Notificación automática al registrar un prontuario sin acoplar los módulos |
+| **Singleton** | `AdministradorProntuarios` | Una única fuente de verdad para todos los prontuarios de la aplicación |
+| **Builder** | `CadenaEncargadosBuilder` | Construcción paso a paso de la cadena con encadenamiento fluido |
+| **Factory Method** | Creación de `Excusa` según `TipoExcusa` | Centraliza la lógica de instanciación de subtipos |
 
 ---
 
@@ -67,7 +81,7 @@ HTTP Client (Postman / Browser)
 git clone https://github.com/Tsvetochkin/ExcusasFINAL.git
 cd ExcusasFINAL
 
-# ejecutar con el wrapper de Maven (no requiere tener Maven instalado)
+# ejecutar con el wrapper de Maven (no requiere Maven instalado)
 ./mvnw spring-boot:run
 ```
 
@@ -175,7 +189,7 @@ Consola H2 disponible en `http://localhost:8080/h2-console`
 
 ---
 
-## Diagrama de flujo de una excusa
+## Flujo de una excusa
 
 ```
 POST /excusas { legajo: 501, motivo: "TRIVIAL" }
@@ -208,7 +222,7 @@ Excusa (abstract)
 
 ## Diagramas UML
 
-Los diagramas están en la carpeta `/diagrams` en formato `.drawio` (importar en [app.diagrams.net](https://app.diagrams.net)):
+Los diagramas están en `/diagrams` en formato `.drawio` — importar en [app.diagrams.net](https://app.diagrams.net):
 
 | Archivo | Contenido |
 |---|---|
