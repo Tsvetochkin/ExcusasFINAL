@@ -4,6 +4,7 @@ import ar.edu.davinci.excusas.model.domain.TipoExcusa;
 import ar.edu.davinci.excusas.model.dto.EncargadoRequestDTO;
 import ar.edu.davinci.excusas.model.dto.ModoRequestDTO;
 import ar.edu.davinci.excusas.model.service.CadenaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class EncargadoController {
 
     // POST /encargados — body: { "nombre": "Carlos", "email": "carlos@empresa.com", "nroLegajo": 200, "motivos": ["TRIVIAL"] }
     @PostMapping
-    public ResponseEntity<?> agregar(@RequestBody EncargadoRequestDTO dto) {
+    public ResponseEntity<?> agregar(@Valid @RequestBody EncargadoRequestDTO dto) {
         try {
             List<TipoExcusa> tipos = dto.getMotivos().stream()
                     .map(m -> TipoExcusa.valueOf(m.toUpperCase()))
@@ -45,7 +46,7 @@ public class EncargadoController {
 
     // PUT /encargados/modo — body: { "nroLegajo": 101, "modo": "VAGO" }
     @PutMapping("/modo")
-    public ResponseEntity<?> cambiarModo(@RequestBody ModoRequestDTO dto) {
+    public ResponseEntity<?> cambiarModo(@Valid @RequestBody ModoRequestDTO dto) {
         boolean ok = cadenaService.cambiarModo(dto.getNroLegajo(), dto.getModo());
         if (ok) {
             return ResponseEntity.ok(Map.of("mensaje", "Modo actualizado a " + dto.getModo()));

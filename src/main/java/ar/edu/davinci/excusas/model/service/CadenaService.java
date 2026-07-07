@@ -61,11 +61,18 @@ public class CadenaService {
     public List<EncargadoInfoDTO> getInfo() {
         List<EncargadoInfoDTO> info = new ArrayList<>();
         for (Encargado e : encargados) {
-            String modo = e.getModoForzado() != null ? e.getModoForzado() : "AUTOMATICO";
+            String modo = e.getModoForzado() != null ? e.getModoForzado() : modoEfectivo(e);
             info.add(new EncargadoInfoDTO(e.getNombre(), e.getNroLegajo(),
                     e.getClass().getSimpleName(), modo));
         }
         return info;
+    }
+
+    private String modoEfectivo(Encargado e) {
+        int procesadas = e.getExcusasProcesadas();
+        if (procesadas < 5) return "PRODUCTIVO";
+        if (procesadas <= 10) return "NORMAL";
+        return "VAGO";
     }
 
     // re-links the whole list after every add or remove

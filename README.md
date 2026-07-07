@@ -232,6 +232,51 @@ Los diagramas están en `/diagrams` en formato `.drawio` — importar en [app.di
 
 ---
 
+## Tests
+
+```bash
+./mvnw test
+```
+
+12 tests en total:
+
+| Clase | Tipo | Cobertura |
+|---|---|---|
+| `ExcusaServiceTest` | Unit (Mockito) | registrar con motivo válido/inválido, empleado inexistente, listar rechazadas, eliminar |
+| `ExcusasControllerTest` | Integración (MockMvc + H2) | POST válido → 201, motivo vacío → 400, motivo inválido → 400, GET → 200, DELETE sin fecha → 400, DELETE con fecha → 200 |
+| `ExcusasApplicationTests` | Smoke | contexto levanta correctamente |
+
+---
+
+## Validaciones
+
+Todos los endpoints que reciben body JSON validan los campos antes de procesar la petición. Si falla la validación, se devuelve `400 Bad Request` con el detalle del error:
+
+```json
+{
+  "errores": {
+    "motivo": "El motivo no puede estar vacío",
+    "legajo": "El legajo debe ser un número positivo"
+  }
+}
+```
+
+| DTO | Campo | Regla |
+|---|---|---|
+| `ExcusaRequestDTO` | `legajo` | positivo |
+| `ExcusaRequestDTO` | `motivo` | no vacío |
+| `EmpleadoRequestDTO` | `nombre` | no vacío |
+| `EmpleadoRequestDTO` | `email` | no vacío + formato válido |
+| `EmpleadoRequestDTO` | `nroLegajo` | positivo |
+| `EncargadoRequestDTO` | `nombre` | no vacío |
+| `EncargadoRequestDTO` | `email` | no vacío + formato válido |
+| `EncargadoRequestDTO` | `nroLegajo` | positivo |
+| `EncargadoRequestDTO` | `motivos` | lista no vacía |
+| `ModoRequestDTO` | `nroLegajo` | positivo |
+| `ModoRequestDTO` | `modo` | no vacío |
+
+---
+
 ## Estructura del proyecto
 
 ```

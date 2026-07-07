@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -38,7 +39,7 @@ public class ExcusasController {
 
     // POST /excusas — body: { "legajo": 501, "motivo": "TRIVIAL" }
     @PostMapping
-    public ResponseEntity<?> registrar(@RequestBody ExcusaRequestDTO dto) {
+    public ResponseEntity<?> registrar(@Valid @RequestBody ExcusaRequestDTO dto) {
         try {
             ExcusaResponseDTO resultado = service.registrar(dto);
             return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
